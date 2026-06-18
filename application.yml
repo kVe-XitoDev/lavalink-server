@@ -1,24 +1,52 @@
 server:
   port: 2333
   address: 0.0.0.0
+
 lavalink:
   server:
     password: "murcia2024"
     sources:
       youtube: true
       soundcloud: true
+      bandcamp: true
+      twitch: true
+      vimeo: true
       http: true
-plugins:
-  youtube:
+      local: false
+    filters:
+      volume: true
+      equalizer: true
+      timescale: true
+      tremolo: true
+      vibrato: true
+      distortion: true
+      rotation: true
+      channelMix: true
+      lowPass: true
+    bufferDurationMs: 400
+    frameBufferDurationMs: 5000
+    opusEncodingQuality: 10
+    trackStuckThresholdMs: 10000
+    useSeekGhosting: true
+    youtubePlaylistLoadLimit: 6
+    playerUpdateInterval: 5
+    youtubeSearchEnabled: true
+    soundcloudSearchEnabled: true
+
+metrics:
+  prometheus:
     enabled: true
-    allowSearch: true
-management:
-  endpoints:
-    web:
-      exposure:
-        include: health
-  endpoint:
-    health:
-      show-details: never
-security:
-  ignored: /actuator/health
+    endpoint: /metrics   # <-- esta ruta devuelve 200 SIN autenticación
+
+sentry:
+  dsn: ""
+  environment: ""
+
+logging:
+  file:
+    path: ./logs/
+  level:
+    root: INFO
+    lavalink: INFO
+  request:
+    enabled: false
