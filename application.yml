@@ -12,3 +12,13 @@ plugins:
   youtube:
     enabled: true
     allowSearch: true
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health
+  endpoint:
+    health:
+      show-details: never
+security:
+  ignored: /actuator/health
